@@ -720,6 +720,18 @@ Planned enhancements:
 
 This tool processes data locally. No data is sent to external services. All assessment data remains within your environment.
 
+## LLM API Key
+
+The core assessment tool does not call an LLM. Only the optional Claude-powered AI assistant in `capital_projects/` uses an Anthropic API key, read from the `ANTHROPIC_API_KEY` environment variable. The key is optional: if it is not set (or the `anthropic` package is not installed), the app falls back to its rule-based assistant. The Claude model used is `claude-sonnet-5-5` (Claude Sonnet 5.5).
+
+The key is the shared secret `Demo-Apps-Share-API-Key` in the Azure Key Vault `kv-demo-apps-shared` (subscription "Demo Apps"). To fetch it:
+
+```bash
+az keyvault secret show --vault-name kv-demo-apps-shared --name Demo-Apps-Share-API-Key --subscription "Demo Apps" --query value -o tsv
+```
+
+Set the returned value as `ANTHROPIC_API_KEY` in your environment (or in the hosting dashboard). Do not commit the key to the repository.
+
 ## Troubleshooting
 
 ### Import Errors

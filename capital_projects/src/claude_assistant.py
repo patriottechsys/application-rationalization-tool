@@ -48,7 +48,7 @@ class ClaudeProjectAssistant:
         """
         self.api_key = api_key or os.environ.get('ANTHROPIC_API_KEY')
         self.client = None
-        self.model = "claude-sonnet-4-20250514"  # Use Claude 3.5 Sonnet for speed/cost balance
+        self.model = "claude-sonnet-5-5"  # Claude Sonnet 5.5 (shared model standard)
 
         if ANTHROPIC_AVAILABLE and self.api_key:
             try:
